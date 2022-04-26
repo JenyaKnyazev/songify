@@ -2,85 +2,63 @@
 
 
 
-void play_song(struct songify* a, struct artist b, struct album c, struct song d)
+void playSong(struct songify* s, struct Artist artist, struct album b, struct song c)
 {
     
-    struct artist* find=a->artists;
-    struct album* find2;
-    struct song* find3;
-    while (find != NULL && strcmp(find->name,b.name) != 0)
-    {
-        find=find->next;
-    }
-    if (find==NULL)
+    struct Artist* run;
+    struct album* run2;
+    struct song* run3;
+    run = get_artist(s->artists, artist);
+    if (run==NULL)
     {
         puts("artist not found");
         return;
     }
 
-    find2=find->albums;
-    while (find2 != NULL && strcmp(find2->name,c.name) != 0)
-    {
-        find2=find2->next;
-    }
-    if (find2==NULL)
+    run2 = get_album(run->albums, b);
+    if (run2==NULL)
     {
         puts("album not found");
         return;
     }
     
-    find3=find2->songs;
-    while (find3 != NULL && find3->id != d.id)
+    run3 = get_song(run2->songs, c);
+    if (run3==NULL)
     {
-        find3=find3->next;
-    }
-    if (find3==NULL)
-    {
-        puts("song not found");
+        puts("SONG NOT FOUND");
         return;
     }
-    find3->timePlayed++;
-    printf("name song :%s,length %d: ,%s\n",find3->name,find3->length,(find3->liked) ? "favorite" : "not favorite");
+    run3->timePlayed++;
+    printf("name song :%s,length %d: ,%s\n",run3->name,run3->length,(run3->liked) ? "fave" : "not fave");
 }
 
 
 
-void add_song_to_fav(struct songify* a, struct  artist b, struct album c , struct song d)
+void addSongFav(struct songify* s, struct  Artist artist, struct album b , struct song c)
 {
-    struct artist* find=a->artists;
-    struct album* find2;
-    struct song* find3;
-    while (find != NULL && strcmp(find->name,b.name) != 0)
-    {
-        find=find->next;
-    }
-    if (find==NULL)
+    struct Artist* run=s->artists;
+    struct album* run2;
+    struct song* run3;
+    run = get_artist(s->artists, artist);
+    if (run == NULL)
     {
         puts("artist not found");
         return;
     }
 
-    find2=find->albums;
-    while (find2 != NULL && strcmp(find2->name,c.name) != 0)
-    {
-        find2=find2->next;
-    }
-    if (find2==NULL)
+    run2 = get_album(run->albums, b);
+    if (run2 == NULL)
     {
         puts("album not found");
         return;
     }
-    
-    find3=find2->songs;
-    while (find3 != NULL && find3->id != d.id)
-    {
-        find3=find3->next;
-    }
-    if (find3==NULL)
+
+    run3 = get_song(run2->songs, c);
+    if (run3 == NULL)
     {
         puts("song not found");
         return;
     }
-    find3->liked=true;
+    run3->liked=true;
 
 }

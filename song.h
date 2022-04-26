@@ -1,14 +1,14 @@
-#ifndef SONG_H
-#define SONG_H
+#ifndef SONG
+#define SONG
 
-#include "artist.h"
+#include "Artist.h"
 #include <stdio.h>
 #include <string.h>
-
+#include "rec.h"
 enum bool
 {
-    false=0,
-    true=1
+    false,
+    true
 };
  
 
@@ -22,6 +22,6 @@ struct song
     struct song_t* next;
 };
 
- void play_song(struct songify* a, struct artist b, struct album c, struct song d);
- void add_song_to_fav(struct songify* a, struct artist b, struct album c, struct song d);
+ void playSong(struct songify* s, struct Artist artist, struct album b, struct song c);
+ void addSongFav(struct songify* s, struct Artist artist, struct album b, struct song c);
 #endif

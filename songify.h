@@ -1,15 +1,15 @@
-#ifndef SONGIFY_H
-#define SONGIFY_H
+#ifndef SONGIFY
+#define SONGIFY
 
-#ifndef ARTIST_H
-#include "artist.h"
+#ifndef ARTIST
+#include "Artist.h"
 #endif
 
 #include <stdlib.h>
 
 struct songify 
 {
-    struct artist* artists;
+    struct Artist* artists;
 };
-struct songify* add_artist(struct songify* a, struct artist b);
+struct songify* addArtist(struct songify* head, struct Artist a);
 #endif
