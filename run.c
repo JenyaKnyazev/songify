@@ -114,8 +114,7 @@ void run()
    free_memory(s->artists, NULL, NULL);
    free(s);
    puts("goodbey");
-
-   
-
+   cleanBuff();
+   getchar();
 }
 
